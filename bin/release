@@ -2,3 +2,7 @@
 
 echo "default_process_types:"
 echo '  web: while true; do echo -ne "HTTP/1.0 200 OK\r\n\r\n" && env | sort; done | nc -l $PORT'
+
+[[ -f "${1}/fail_release" ]] && exit 1
+
+exit 0

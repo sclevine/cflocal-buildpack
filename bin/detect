@@ -1,5 +1,9 @@
 #!/bin/bash
 
 echo "Detect arguments: ${1}"
-[[ -f "${1}/detect ]] && exit 0
-exit 1
+echo "Detect message from stdout."
+>&2 echo "Detect message from stderr."
+
+[[ -f "${1}/fail_detect" ]] && exit 1
+
+exit 0
