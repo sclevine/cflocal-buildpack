@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "Compile arguments: $@"
+env | sort > "${1}/env"

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Detect arguments: ${1}"
+[[ -f "${1}/detect ]] && exit 0
+exit 1
