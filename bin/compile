@@ -1,8 +1,9 @@
 #!/bin/bash
 
->&2 echo "Compile message from stderr."
-echo "Compile message from stdout."
 echo "Compile arguments: $@"
+
+echo "Compile message from stdout."
+>&2 echo "Compile message from stderr."
 
 env | sort > "${1}/env"
 
