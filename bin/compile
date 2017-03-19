@@ -5,7 +5,7 @@ echo "Compile arguments: $@"
 echo "Compile message from stdout."
 >&2 echo "Compile message from stderr."
 
-env | sort > "${1}/env"
+env | grep -iv _proxy | sort > "${1}/env"
 
 [[ -f "${1}/fail_compile" ]] && exit 1
 

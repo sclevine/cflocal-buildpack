@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "default_process_types:"
-send_response='( echo -ne "HTTP/1.0 200 OK\r\n\r\n" && env | sort ) | nc -l "$PORT"'
+send_response='( echo -ne "HTTP/1.0 200 OK\r\n\r\n" && env | grep -iv _proxy | sort ) | nc -l "$PORT"'
 output='echo "Log message from stdout." && >&2 echo "Log message from stderr."'
 echo "  web: while true; do ${send_response} && ${output}; done"
 
