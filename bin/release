@@ -1,9 +1,15 @@
 #!/bin/bash
 
+header='echo -ne "HTTP/1.0 200 OK\r\n\r\n"'
+staging_env='echo "Staging:" && cat env'
+running_env='echo "Running:" && env | grep -iv _proxy | sort'
+
+send_response="( ${header} && ${staging_env} && ${running_env} ) | nc -l \"\$PORT\""
+
+output_logs='echo "Log message from stdout." && >&2 echo "Log message from stderr."'
+
 echo "default_process_types:"
-send_response='( echo -ne "HTTP/1.0 200 OK\r\n\r\n" && env | grep -iv _proxy | sort ) | nc -l "$PORT"'
-output='echo "Log message from stdout." && >&2 echo "Log message from stderr."'
-echo "  web: while true; do ${send_response} && ${output}; done"
+echo "  web: while true; do ${send_response} && ${output_logs}; done"
 
 [[ -f "${1}/fail_release" ]] && exit 1
 
