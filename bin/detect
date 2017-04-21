@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Detect arguments: ${1}"
+echo "Detect arguments: $@"
 
 echo "Detect message from stdout."
 >&2 echo "Detect message from stderr."
