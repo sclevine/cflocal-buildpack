@@ -7,8 +7,8 @@ echo "Compile message from stdout."
 
 env | grep -iv _proxy | sort > "${1}/env"
 
-[[ $(cat "${2}/cached") = true ]] && echo "Cache detected." || echo "Cache not detected."
-echo true > "${2}/cached"
+[[ -f "${2}/cached" ]] && echo "Cache detected." || echo "Cache not detected."
+touch "${2}/cached"
 
 [[ -f "${1}/fail_compile" ]] && exit 1
 
