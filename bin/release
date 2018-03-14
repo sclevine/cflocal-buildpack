@@ -2,7 +2,7 @@
 
 header='echo -ne "HTTP/1.0 200 OK\r\n\r\n"'
 staging_env='echo "Staging:" && cat env'
-running_env='echo "Running:" && env | grep -iv _proxy | sort'
+running_env='echo "Running:" && env | grep -iv _proxy= | sort'
 
 send_response="( ${header} && ${staging_env} && ${running_env} ) | nc -l \"\$PORT\""
 
