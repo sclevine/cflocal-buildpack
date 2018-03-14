@@ -5,7 +5,7 @@ echo "Compile arguments: $@"
 echo "Compile message from stdout."
 >&2 echo "Compile message from stderr."
 
-env | grep -iv _proxy | sort > "${1}/env"
+env | grep -iv _proxy= | sort > "${1}/env"
 
 [[ -f "${2}/cached" ]] && echo "Cache detected." || echo "Cache not detected."
 touch "${2}/cached"
